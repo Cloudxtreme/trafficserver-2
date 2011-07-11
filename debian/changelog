@@ -1,3 +1,9 @@
+trafficserver (3.0.0-2) unstable; urgency=low
+
+  * Remove "[linux-any]" from control, not liked on 10.04
+
+ -- Jason Cook <jason@fastly.com>  Mon, 11 Jul 2011 11:47:25 -0700
+
 trafficserver (3.0.0-1) unstable; urgency=low
 
   * New upstream release. Major changes (since 2.1.9):
