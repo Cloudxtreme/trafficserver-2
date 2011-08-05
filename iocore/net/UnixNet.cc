@@ -381,8 +381,10 @@ NetHandler::mainNetEvent(int event, Event *e)
   pd->result = 0;
 
 #if defined(USE_EDGE_TRIGGER)
- // UnixNetVConnection *
-  while ((vc = read_ready_list.dequeue())) {
+  UnixNetVConnection *next_vc = NULL;
+  vc = read_ready_list.head;
+  while (vc) {
+    next_vc = vc->read.ready_link.next;
     if (vc->closed)
       close_UnixNetVConnection(vc, trigger_event->ethread);
     else if (vc->read.enabled && vc->read.triggered)
@@ -397,8 +399,12 @@ NetHandler::mainNetEvent(int event, Event *e)
       }
 #endif
     }
+    vc = next_vc;
   }
-  while ((vc = write_ready_list.dequeue())) {
+  next_vc = NULL;
+  vc = write_ready_list.head;
+  while (vc) {
+    next_vc = vc->write.ready_link.next;
     if (vc->closed)
       close_UnixNetVConnection(vc, trigger_event->ethread);
     else if (vc->write.enabled && vc->write.triggered)
@@ -413,6 +419,7 @@ NetHandler::mainNetEvent(int event, Event *e)
       }
 #endif
     }
+    vc = next_vc;
   }
 #else /* !USE_EDGE_TRIGGER */
   while ((vc = read_ready_list.dequeue())) {
