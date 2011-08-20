@@ -39,7 +39,7 @@
 
 int cache_config_mutex_retry_delay = 2;
 
-int fds_limit = 8000;
+int fds_limit = 100000;
 UDPNetProcessor& udpNet; // = udpNetInternal;
 
 ClassAllocator<UDPPacketInternal> udpPacketAllocator("udpPacketAllocator");

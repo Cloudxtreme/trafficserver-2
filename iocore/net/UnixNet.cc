@@ -29,7 +29,7 @@ ink_hrtime emergency_throttle_time;
 int net_connections_throttle;
 int fds_throttle;
 bool throttle_enabled;
-int fds_limit = 8000;
+int fds_limit = 100000;
 ink_hrtime last_transient_accept_error;
 
 extern "C" void fd_reify(struct ev_loop *);
