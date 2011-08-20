@@ -1,3 +1,9 @@
+trafficserver (3.0.0-4) unstable; urgency=low
+
+  * Bump up the file descriptors
+
+ -- Jason Cook <jason@fastly.com>  Fri, 19 Aug 2011 19:44:21 -0700
+
 trafficserver (3.0.0-3) unstable; urgency=low
 
   * Patch for TS-888 SSL bug
